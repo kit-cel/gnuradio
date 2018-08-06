@@ -463,6 +463,28 @@ The keys for the input argument gr::digital::vblast::decoder_cc::equalizer_type 
 - 'ZF' for  Zero-Forcing
 - 'MMSE' for Minimum Mean Squared Error
 
+\section MIMO-OFDM
+The described MIMO enocding and decoding blocks are a generic implementation of the respective MIMO algorithms. The usage of such a MIMO algorithm in an entire communications system requires more than just the inclusion of the MIMO blocks in the transmitting/receiving chain. It is as well needed to provide an apropriate environment for the MIMO blocks and to fullfil assumtions, which were made for the MIMO algorithms and the communication system itself.
+
+You need to fullfil the following requirements to include the MIMO capabilities of GNU Radio into your communication system:
+- 1. Correct placement of the encoder/decoder block in your flowgraph.
+- 2. Provide a reliable MIMO channel estimation which is fitted to your specific setup.
+
+Aufzaehlung von requriemnts:
+richtiges placement -> bild von Blog
+channel estimation -> allg chanest blog fuer MIMO erlaeutern
+flat channel
+
+\subsection 1. Placement
+The MIMO encoding of a complex data stream to M complex data streams can also be seen as a type of digital modulation where the dimension space is the property to be modulated. Therefore, it is reasonable to place the MIMO encoder directly behind the actual digital modulator, which maps a sequence of bits to a complex sample.
+The respective MIMO decoder is then placed before the digital demodulator in the receiver chain.
+--- vectorized for multi-carrier system
+
+\subsection 2. Channel estimation
+The most important requirement of the MIMO decoders (except for differential schemes) is a precise and reliable estimation of the transmission channel. Without a good estimation of the channel matrix, the MIMO decoder cannot equalize the signals, meaning that it can especially not separate the M transmit signals from each other. In most cases, the channel estimaiton is data aided. For M transmitters, we need altogether M training sequences which are orthogonal to each other.
+
+
+
 \section mimo_references References
 
 [1] Andrea Goldsmith. 2005. Wireless Communications. 
