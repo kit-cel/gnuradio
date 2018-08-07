@@ -481,7 +481,12 @@ The respective MIMO decoder is then placed before the digital demodulator in the
 --- vectorized for multi-carrier system
 
 \subsection 2. Channel estimation
-The most important requirement of the MIMO decoders (except for differential schemes) is a precise and reliable estimation of the transmission channel. Without a good estimation of the channel matrix, the MIMO decoder cannot equalize the signals, meaning that it can especially not separate the M transmit signals from each other. In most cases, the channel estimaiton is data aided. For M transmitters, we need altogether M training sequences which are orthogonal to each other.
+The most important requirement for the MIMO decoders (except for the differential schemes) is a precise and reliable estimation of the transmission channel. Without a good estimation of the channel matrix, the MIMO decoder cannot equalize the signals, meaning that it can especially not separate the M transmit signals from each other. The CSI has to be provided via stream tags with the tag key 'csi'. The structure of the CSI tag must match the requirements of the MIMO decoder blocks, which is determined in the following way: The CSI must be a 3-dimensional vector with the dimensions vector length, N, M. Set the vector length to a non default value vlen > 1 if you use a multicarrier system like OFDM (in this case it would be vlen=number of occupied sub-carriers). To generate a proper CSI tag, use the pmt structure pmt_vector(pmt_vector(pmt_c32vector))).
+
+In most cases, the channel estimaiton is data-aided. For M transmitters, we need altogether M training sequences which are orthogonal to each other. A basic MIMO channel estimation is provided with the class gr::digital::mimo_channel_estimator_cc. The according block estimates the MIMO channel matrix with the help of training sequences which can be set as an input argument. In order to separate the transmit signals from each other, you should use a set of orthogonal training sequences, for example the rows of a Walsh matrix or of an FFT matrix. The estimator block then estimates the CSI on the basis of the training sequences and tags it in the above described structure to the stream.
+
+The channel estimation is of course a very system specific task and if your system has some particular properties you should create your own custom channel estimator which fits exactly the requirements of your
+
 
 
 
