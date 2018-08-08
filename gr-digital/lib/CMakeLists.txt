@@ -139,6 +139,7 @@ list(APPEND digital_sources
     diff_stbc_decoder_cc_impl.cc
     vblast_encoder_cc_impl.cc
     vblast_decoder_cc_impl.cc
+    mimo_channel_estimator_cc_impl.cc
 )
 
 #Add Windows DLL resource file if using MSVC
