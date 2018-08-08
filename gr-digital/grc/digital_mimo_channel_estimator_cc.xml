@@ -1,0 +1,32 @@
+<block>
+  <name>MIMO Channel estimator</name>
+  <key>digital_mimo_channel_estimator_cc</key>
+  <category>[MIMO]</category>
+  <import>from gnuraido import digital</import>
+  <make>digital.mimo_channel_estimator_cc($M, $N, $training_sequence)</make>
+  <param>
+    <name>M</name>
+    <key>M</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>N</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Training Sequence</name>
+    <key>training_sequence</key>
+    <type>raw</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <nports>N</nports>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <nports>N</nports>
+  </source>
+</block>
