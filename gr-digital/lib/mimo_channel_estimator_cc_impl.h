@@ -54,7 +54,7 @@ namespace gr {
       uint16_t d_N; /*!< Number of receiving antennas. */
       std::vector<std::vector<gr_complex> > d_training_sequence;
       /*!< Training matrix: Each subvector/row is sent through one of the M transmit antennas. */
-      uint16_t d_training_length; /*!< Length of the training sequence. */
+      uint32_t d_training_length; /*!< Length of the training sequence. */
       std::vector <gr::tag_t> tags; /*!< Vector that stores the tags in input buffer. */
       static const pmt::pmt_t d_key; /*!< PMT stores the key of the CSI tag. */
       std::vector<std::vector<gr_complex> > d_csi; /*!< Currently estimated CSI. */

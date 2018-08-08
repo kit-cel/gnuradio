@@ -81,7 +81,7 @@ class qa_mimo_channel_estimator_cc (gr_unittest.TestCase):
     '''
     2 tests validating the correct estimation of the channel coefficients with a random channel
     and 1xN MIMO scheme. '''
-    def test_001_t (self):
+    def test_1xN_scheme (self):
         # Test parameters.
         M = 1
         repetitions = 2
@@ -101,7 +101,7 @@ class qa_mimo_channel_estimator_cc (gr_unittest.TestCase):
     '''
     2 tests validating the correct estimation of the channel coefficients with a random channel
     and 2xN MIMO scheme. '''
-    def test_002_t (self):
+    def test_2xN_scheme (self):
         # Test parameters.
         M = 2
         repetitions = 2
@@ -121,7 +121,7 @@ class qa_mimo_channel_estimator_cc (gr_unittest.TestCase):
     '''
     2 tests validating the correct estimation of the channel coefficients with a random channel
     and MxN MIMO scheme (M>2). '''
-    def test_003_t (self):
+    def test_MxN_scheme (self):
         # Test parameters.
         M = np.random.randint(3, 65)
         repetitions = 2
